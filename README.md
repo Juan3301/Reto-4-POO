@@ -1,38 +1,72 @@
------
+----
+
 
 **Ejercicio:**
-1. Create class Line.
+1. Create a superclass called Shape(), which is the base of the classes Reactangle() and Square(), define the methods compute_area and compute_perimeter in Shape() and then using polymorphism redefine the methods properly in Rectangle and in Square.
+
+2. Using the classes Point() and Line() define a new super-class Shape() with the following structure:
+
 ```mermaid
 classDiagram
-    class Line {
-      +float length
-      +float slope
-      +Point start
-      +Point end
-      +__init__(self, start, end)
-      +compute_length()
-      +compute_slope()
-      +compute_horizontal_cross()
-      +compute_vertical_cross()
+    class Shape {
+        + vertices: list(Point)
+        + edges: list(Line)
+        + inner_angles: list(float)
+        + is_regular: bool
+        + compute_area(self)
+        + compute_perimeter(self)
+        + compute_inner_angles(self)
     }
-```  
- - *length*, *slope*, start, end: Instance attributes, two of them being points (so a line is composed at least of two points).
- - compute_length(): should return the line´s length
- - compute_slope(): should return the slope of the line from tje horizontal in deg.
- - compute_horizontal_cross(): should return if exists the intersection with x-axis
- - compute_vertical_cross(): should return if exists the intersection with y-axis
 
-2. Redefine the class Rectangle, adding a new method of initialization using 4 Lines (composition at its best, a rectangle is compose of 4 lines).
+    class Point {
+        + x: int
+        + y: int
+        + compute_distance(self, Point)
+    }
 
-3. **Optional:** Define a method called discretize_line() that creates an array on *n* equally spaced points in the line and assigned as a instance attribute.
+    class Line {
+        + start_point: Point
+        + end_point: Point
+        + length: float
+    }
 
-## Reto 3
-1. Create a repo with the class exercise
-2. **Restaurant scenario:** You want to design a program to calculate the bill for a customer's order in a restaurant.
-- Define a base class *MenuItem*: This class should have attributes like name, price, and a method to calculate the total price.
-- Create subclasses for different types of menu items: Inherit from *MenuItem* and define properties specific to each type (e.g., Beverage, Appetizer, MainCourse). 
-- Define an Order class: This class should have a list of *MenuItem* objects and methods to add items, calculate the total bill amount, and potentially apply specific discounts based on the order composition.
+    class Triangle {
+    }
 
-Create a class diagram with all classes and their relationships. 
-The menu should have at least 10 items.
-The code should follow PEP8 rules.
+    class Isosceles{
+    }
+
+    class Equilateral{
+    }
+
+    class Scalene{
+    }
+
+    class TriRectangle{
+    }
+
+    class Rectangle{
+    }
+
+    class Square{
+    }
+
+    Shape *-- Line 
+    Shape *-- Point
+    Triangle --|> Shape
+    Isosceles --|> Triangle
+    Equilateral --|> Triangle
+    Scalene --|> Triangle
+    TriRectangle --|> Triangle
+    Rectangle --|> Shape
+    Square --|> Rectangle
+```
+
+Use Inheritance, Composition, Encapsulation and Polymorphism to define the classes. All attributes must have their respective setters and getters.
+
+## Reto 4: 
+1. Include the class exercise in the repo.
+2. **The restaurant revisted**
+ - Add setters and getters to all subclasses for menu item
+ - Override calculate_total_price() according to the order composition (e.g if the order includes a main course apply some disccount on beverages)
+ - Add the class Payment() following the class example.
