@@ -20,7 +20,7 @@ class MenuItem:
 
 
 class Drink(MenuItem):
-    def __init__(self, name, price, size, drink_type):
+    def __init__(self, name: str, price: float, size: str, drink_type: str):
         super().__init__(name, price)
         self.__size = size
         self.__drink_type = drink_type
@@ -42,7 +42,8 @@ class Drink(MenuItem):
 
 
 class Starter(MenuItem):
-    def __init__(self, name, price, temperature, size, presentation):
+    def __init__(self, name: str, price: float, temperature: str, size: str,
+                 presentation: str):
         super().__init__(name, price)
         self.__temperature = temperature
         self.__size = size
@@ -68,7 +69,8 @@ class Starter(MenuItem):
 
 
 class MainCourse(MenuItem):
-    def __init__(self, name, price, protein_type, side_dish, size, style):
+    def __init__(self, name: str, price: float, protein_type: str,
+                 side_dish: str, size: str, style: str):
         super().__init__(name, price)
         self.__protein_type = protein_type
         self.__side_dish = side_dish
@@ -104,7 +106,8 @@ class MainCourse(MenuItem):
 
 
 class Dessert(MenuItem):
-    def __init__(self, name, price, dessert_type, flavor, temperature):
+    def __init__(self, name: str, price: float, dessert_type: str, flavor: str,
+                 temperature: str):
         super().__init__(name, price)
         self.__dessert_type = dessert_type
         self.__flavor = flavor
@@ -196,8 +199,9 @@ class Order:
         payment_method.pay(total)
 
 
+
 class PaymentMethod:
-    def pay(self, amount):
+    def pay(self, amount: float):
         raise NotImplementedError("Subclasses must implement pay()")
 
 
@@ -214,10 +218,10 @@ class Card(PaymentMethod):
 
 
 class Cash(PaymentMethod):
-    def __init__(self, amount_given):
+    def __init__(self, amount_given: float):
         self.amount_given = amount_given
 
-    def pay(self, amount):
+    def pay(self, amount: float):
         if self.amount_given >= amount:
             print(f"Cash payment successful. Change: {self.amount_given - amount:.2f}")
         else:

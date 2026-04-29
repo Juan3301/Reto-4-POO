@@ -205,7 +205,7 @@ class Square(Rectangle):
         
 
 class Triangle(Shape):
-    def __init__(self, vertices, edges):
+    def __init__(self, vertices: Point, edges: Line):
         super().__init__(False, vertices, edges, [])
 
     def get_edges(self) -> list:
@@ -229,7 +229,7 @@ class Triangle(Shape):
 
 
 class Equilateral(Triangle):
-    def __init__(self, vertices, edges):
+    def __init__(self, vertices: Point, edges: Line):
         super().__init__(vertices, edges)
         self.set_is_regular(True)
 
@@ -242,7 +242,7 @@ class Equilateral(Triangle):
 
 
 class Isosceles(Triangle):
-    def __init__(self, vertices, edges):
+    def __init__(self, vertices: Point, edges: Line):
         super().__init__(vertices, edges)
 
     def compute_area(self) -> float:
@@ -262,7 +262,7 @@ class Isosceles(Triangle):
 
 
 class Scalene(Triangle):
-    def __init__(self, vertices, edges):
+    def __init__(self, vertices: Point, edges: Line):
         super().__init__(vertices, edges)
 
     def compute_area(self) -> float:
@@ -270,7 +270,7 @@ class Scalene(Triangle):
 
 
 class TriRectangle(Triangle):
-    def __init__(self, vertices, edges):
+    def __init__(self, vertices: Point, edges: Line):
         super().__init__(vertices, edges)
 
     def compute_area(self) -> float:
